@@ -1,5 +1,5 @@
 /**
- *implements the interface Rechenoperatio 
+ * implements the interface Rechenoperatio
  */
 public class Quadrat implements Rechenoperation {
 
