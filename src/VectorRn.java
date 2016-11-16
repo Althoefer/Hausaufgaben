@@ -1,3 +1,4 @@
+import java.util.Arrays;
 
 public class VectorRn {
 	private double[] vector;
@@ -154,6 +155,46 @@ public class VectorRn {
 		}
 	}
 
+	public VectorRn[] bestimmeSenkrechteVektoren() {
+		VectorRn[] senkrecht = new VectorRn[this.vector.length - 1];
+
+		int i = 0;
+		for (i = 0; i < this.vector.length; i++) {
+			if (this.vector[i] == 0) {
+				continue;
+			}
+			break;
+		}
+		if (i == this.vector.length) {
+			throw new ArithmeticException("Vektor ist Nullvektor");
+		}
+		//zaehlt, wieviele senkrechte Vektoren noch gefunden werden sollen
+		int count = this.vector.length - 1;
+
+		aussen: for (i = 0; i < this.vector.length; i++) {
+			for (int j = +1; j < this.vector.length; j++) {
+				//erzeugt ein mit 0 befuelltes Array
+				double[] workingCopy = new double[this.vector.length];
+				Arrays.fill(workingCopy, 0);
+				//count = 0 heisst senkrecht ist voll und es sind genuegend senkrechte bestimmt
+				if (count == 0) {
+					break aussen;
+				}
+				//fuegt in das leere Array zwei werte != 0 aus dem Vektor ein,
+				//vertauscht und einer negiert
+				if (this.vector[i] != 0 && this.vector[j] != 0) {
+					workingCopy[i] = this.vector[j];
+					workingCopy[j] = (-1) * this.vector[i];
+					senkrecht[count - 1] = new VectorRn(workingCopy);
+					count--;
+					//continue aussen;
+				}
+			}
+		}
+
+		return senkrecht;
+	}
+
 	/**
 	 * gibt einen Klon des internen Array des Vektors zurueck
 	 * @return
@@ -164,18 +205,17 @@ public class VectorRn {
 	}
 
 	public static void main(String[] args) {
-		VectorRn vectorA = new VectorRn(new double[] { 1, 2, 3, 4 });
-		System.out.println("Vektor a: " + vectorA.toString());
-		VectorRn vectorB = new VectorRn(new double[] { 5, 6, 7, 8 });
-		System.out.println("Vektor b: " + vectorB.toString());
-		VectorRn vectorC = new VectorRn(new double[] { 5, 2 });
-		System.out.println("Vektor c: " + vectorC.toString());
-		VectorRn vectorD = new VectorRn(new double[] { -2, 5 });
-		System.out.println("Vektor d: " + vectorD.toString());
-
-		System.out.println(VectorRn.getWinkel(vectorA, vectorB));
-		System.out.println(VectorRn.getWinkel(vectorC, vectorD));
-		System.out.println(VectorRn.projiziereV1aufV2(vectorC, vectorD));
+		try {
+			/*
+			 * Fehler wenn nur ein Element des Vektors ungleich 0 ist, z.B. (0,0,0,1)
+			 */
+			VectorRn a = new VectorRn(new double[] { 0, 0, 0, 0});
+			VectorRn b = new VectorRn(new double[] { 3, 1, 4 });
+			System.out.println("a: " + Arrays.toString(a.bestimmeSenkrechteVektoren()));
+			System.out.println("b: " + Arrays.toString(b.bestimmeSenkrechteVektoren()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	private static void teste1() {
@@ -212,5 +252,20 @@ public class VectorRn {
 			System.out.println(e.getMessage());
 		}
 		System.out.println("b || d = " + vectorB.isParallel(vectorD));
+	}
+
+	private static void teste2() {
+		VectorRn vectorA = new VectorRn(new double[] { 1, 2, 3, 4 });
+		System.out.println("Vektor a: " + vectorA.toString());
+		VectorRn vectorB = new VectorRn(new double[] { 5, 6, 7, 8 });
+		System.out.println("Vektor b: " + vectorB.toString());
+		VectorRn vectorC = new VectorRn(new double[] { 5, 2 });
+		System.out.println("Vektor c: " + vectorC.toString());
+		VectorRn vectorD = new VectorRn(new double[] { -2, 5 });
+		System.out.println("Vektor d: " + vectorD.toString());
+
+		System.out.println(VectorRn.getWinkel(vectorA, vectorB));
+		System.out.println(VectorRn.getWinkel(vectorC, vectorD));
+		System.out.println(VectorRn.projiziereV1aufV2(vectorC, vectorD));
 	}
 }
