@@ -1,6 +1,6 @@
 /**
  * Strategy interface
- *
+ * 
  * @author cw585968
  *
  */
@@ -15,7 +15,7 @@ public interface GefStrategie {
 
 	/**
 	 * The player receives the opponents last decision.
-	 *
+	 * 
 	 * @param decision
 	 *            which was made by his opponent
 	 */

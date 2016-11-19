@@ -34,7 +34,6 @@ public class GefDilemma {
 		this.pointsP2 = 0;
 	}
 
-	// TODO
 	/**
 	 * Performs the game n turns.
 	 * 
@@ -42,44 +41,34 @@ public class GefDilemma {
 	 *            number of turns of the game
 	 */
 	public void spiele(int n) {
-
-	}
-
-	/**
-	 * Getter of player1's strategy
-	 * 
-	 * @return player1's strategy
-	 */
-	public GefStrategie getPlayer1() {
-		return this.player1;
-	}
-
-	/**
-	 * Getter of player2's strategy
-	 * 
-	 * @return player2's strategy
-	 */
-	public GefStrategie getPlayer2() {
-		return this.player2;
-	}
-
-	// TODO
-	/**
-	 * Distributes the points to each player Missing parameters
-	 * missing?????????????????? maybe make private method only?
-	 */
-	public void points() {
-
-	}
-
-	// TODO
-	/**
-	 * Both players are informed about the opponent's last turn and think aboit
-	 * their next turn. parameter missing???????????? maybe make private method
-	 * only?
-	 */
-	public void informAndThink() {
-
+		for (int i = 0; i < n; i++) {
+			// get the players' next decisions
+			boolean player1 = this.player1.getNextDecision();
+			boolean player2 = this.player2.getNextDecision();
+			// distribute points according to the decision
+			if (player1 && player2) {
+				this.pointsP1 += 2;
+				this.pointsP2 += 2;
+			} else if (!player1 && !player2) {
+				this.pointsP1 += 4;
+				this.pointsP2 += 4;
+			} else if (!player1 && player2) {
+				this.pointsP2 += 5;
+			} else {
+				this.pointsP1 += 5;
+			}
+			// inform the players about their opponents last decision
+			this.player1.setOpponentsLastDecision(player2);
+			this.player2.setOpponentsLastDecision(player1);
+		}
+		// show the results on screen
+		if (this.pointsP1 > this.pointsP2) {
+			System.out.printf("Ergebnis: Spieler2 gewinnt mit %d Punkten zu %d Punkten.", this.pointsP2, this.pointsP1);
+		} else if (this.pointsP1 < this.pointsP2) {
+			System.out.printf("Ergebnis: Spieler1 gewinnt mit %d Punkten zu %d Punkten.", this.pointsP1, this.pointsP2);
+		} else {
+			System.out.printf("Ergebnis: Gleichstand mit jeweils %d Punkten.", this.pointsP1);
+		}
 	}
 
 }
