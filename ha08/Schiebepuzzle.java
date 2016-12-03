@@ -1,8 +1,19 @@
-
+/**
+ * class Schiebepuzzle is a puzzle with 15 numbers in a 4x4 frame. The tiles can
+ * be moved by horizontal and vertical shifts. The aim is to get the tiles set
+ * up in order by performing a number of shifts.
+ * 
+ * @author cw585968
+ *
+ */
 public class Schiebepuzzle {
 
 	private int[][] puzzle = new int[4][4];
 
+	/**
+	 * Constructor of Schiebepuzzle, which initializes the puzzle in ordered
+	 * configuration
+	 */
 	public Schiebepuzzle() {
 		for (int i = 0; i < this.puzzle.length; ++i) {
 			for (int j = 0; j < this.puzzle[i].length; ++j) {
@@ -15,6 +26,16 @@ public class Schiebepuzzle {
 		}
 	}
 
+	/**
+	 * Shifts a tile with the number i to the empty spot
+	 * 
+	 * @param i
+	 *            the tile which is requested to be moved
+	 * @throws WrongNumberException
+	 *             if i is not a number appearing in the puzzle
+	 * @throws WrongMoveException
+	 *             if the tile with number i cannot be moved
+	 */
 	public void schiebe(int i) throws WrongNumberException, WrongMoveException {
 		// variables for the indexes of the empty place
 		int a = -1;
@@ -39,6 +60,7 @@ public class Schiebepuzzle {
 				}
 			}
 			if (this.istVerschiebbar(i)) {
+				// changes the two tiles
 				this.puzzle[a][b] = i;
 				this.puzzle[c][d] = 0;
 			} else {
@@ -49,6 +71,14 @@ public class Schiebepuzzle {
 		}
 	}
 
+	/**
+	 * Tests if the tile with the number i can be shifted
+	 * 
+	 * @param i
+	 *            the number of the tile of which is requested to know if it can
+	 *            be moved or not
+	 * @return if the tile i is able to be shifted or not
+	 */
 	public boolean istVerschiebbar(int i) {
 		// variables for the indexes of the empty place
 		int a = -1;
@@ -72,6 +102,7 @@ public class Schiebepuzzle {
 					}
 				}
 			}
+			// condition for possibility of swapping
 			if ((a + 1 == c && b + 1 == d) || (a + 1 == c && b - 1 == d) || (a - 1 == c && b + 1 == d)
 					|| (a - 1 == c && b - 1 == d)) {
 				return true;
@@ -83,6 +114,9 @@ public class Schiebepuzzle {
 		}
 	}
 
+	/**
+	 * Scrambles the puzzle randomly with 100 moves
+	 */
 	public void mische() {
 		int number = -1;
 		for (int i = 0; i < 100; ++i) {
@@ -96,6 +130,9 @@ public class Schiebepuzzle {
 		}
 	}
 
+	/**
+	 * Returns a formated String of the current state of the puzzle
+	 */
 	public String toString() {
 		String s = "";
 		int number = 0;
@@ -114,6 +151,11 @@ public class Schiebepuzzle {
 		return s;
 	}
 
+	/**
+	 * Gives the current state of the puzzle as an integer array
+	 * 
+	 * @return the current state of the puzzle
+	 */
 	public int[][] getPuzzle() {
 		int[][] result = new int[this.puzzle.length][this.puzzle[0].length];
 		for (int i = 0; i < this.puzzle.length; ++i) {

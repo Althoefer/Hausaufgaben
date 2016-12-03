@@ -1,10 +1,16 @@
-
+/**
+ * Test class for Schiebepuzzle and its solving algorithms
+ * 
+ * @author cw585968
+ *
+ */
 public class TestPuzzle {
 
 	public static void main(String[] args) {
 		Schiebepuzzle puzzle = new Schiebepuzzle();
 		System.out.println(puzzle);
-		// Mischen nicht vergessen, ansonsten hat der Spieler sehr schnell gewonnen
+		// Mischen nicht vergessen, ansonsten hat der Spieler sehr schnell
+		// gewonnen
 		puzzle.mische();
 		System.out.println(puzzle);
 		// Testen des Loesungsalgorithmus
