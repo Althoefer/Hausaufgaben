@@ -1,3 +1,5 @@
+package ha08;
+
 /**
  * class Schiebepuzzle is a puzzle with 15 numbers in a 4x4 frame. The tiles can
  * be moved by horizontal and vertical shifts. The aim is to get the tiles set

@@ -1,3 +1,5 @@
+package ha08;
+
 /**
  * Exception to be thrown if a requested move cannot be performed in a given
  * Schiebepuzzle
