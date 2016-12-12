@@ -69,14 +69,12 @@ public abstract class Chessman {
 	 */
 	public boolean canMoveTo(Position pos) {
 		ArrayList<Position> moves = this.getMoveList();
-		boolean found = false;
 		for (Position position : moves) {
 			if (position.getX() == pos.getX() && position.getY() == pos.getY()) {
-				found = true;
-				break;
+				return true;
 			}
 		}
-		return found;
+		return false;
 	}
 
 	/**
