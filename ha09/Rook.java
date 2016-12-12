@@ -29,14 +29,12 @@ public class Rook extends Chessman {
 		int x = this.getPosition().getX();
 		int y = this.getPosition().getY();
 		ArrayList<Position> moveList = new ArrayList<Position>();
-		// add all Positions with the same x-coordinate
 		for (int i = 1; i <= 8; i++) {
+			// add all Positions with the same x-coordinate
 			if (i != y) {
 				moveList.add(new Position(x, i));
 			}
-		}
-		// add all Positions with the same y-coordinate
-		for (int i = 1; i <= 8; i++) {
+			// add all Positions with the same y-coordinate
 			if (i != x) {
 				moveList.add(new Position(i, y));
 			}

@@ -44,12 +44,10 @@ public class Knight extends Chessman {
 		// go through the list and check all Positions
 		// delete if !isValid()
 		for (int i = 0; i < moveList.size(); i++) {
-			if (moveList.get(i).isValid()) {
-				// everything allright
-			} else {
+			if (!moveList.get(i).isValid()) {
 				moveList.remove(i);
-				// else we might skip a element the list, because the element at
-				// i ist replaced by a new one
+				// we might skip a element the list, because the element at
+				// i is replaced by a new one
 				i--;
 			}
 		}

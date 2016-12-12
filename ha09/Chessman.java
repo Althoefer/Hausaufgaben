@@ -68,8 +68,7 @@ public abstract class Chessman {
 	 * @return true, if it is a reachable position false, if not
 	 */
 	public boolean canMoveTo(Position pos) {
-		ArrayList<Position> moves = this.getMoveList();
-		for (Position position : moves) {
+		for (Position position : this.getMoveList()) {
 			if (position.getX() == pos.getX() && position.getY() == pos.getY()) {
 				return true;
 			}
