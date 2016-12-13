@@ -1,3 +1,5 @@
+package ha09;
+
 
 /**
  * Represents a Position on a chessfield the final attributes can be set, but
