@@ -1,14 +1,10 @@
 
 public class ZahlwortDeutsch extends Zahlwort {
 
-	final String[][] zahlen = new String[][] {
-			{ "", "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun" },
-			{ "", "zehn", "zwanzig", "dreissig", "vierzig", "fuenfzig", "sechzig", "siebzig", "achtzig", "neunzig" },
-			{ "", "einhundert", "zweihundert", "dreihundert", "vierhundert", "fuenfhundert", "sechshundert",
-					"siebenhundert", "achthundert", "neunhundert" },
-			{ "", "eintausend", "zweitausend", "dreitausend", "viertausend", "fuenftausend", "sechstausend",
-					"siebentausend", "achttausend", "neuntausend" },
-			{ "und", "eins", "null", "elf", "zwoelf", "sechzehn", "siebzehn" } };
+	final String[] einer = new String[] { "", "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun" };
+	final String[] zehner = new String[] { "", "zehn", "zwanzig", "dreissig", "vierzig", "fuenfzig", "sechzig", "siebzig", "achtzig", "neunzig" };
+	final String[] zehnerpotenzen = new String[] { "hundert", "tausend" };
+	final String[] spezialfaelle = new String[] { "null", "eins", "elf", "zwoelf", "sechzehn", "siebzehn" };
 
 	public ZahlwortDeutsch(int x) {
 		super(x);
@@ -16,35 +12,51 @@ public class ZahlwortDeutsch extends Zahlwort {
 
 	@Override
 	public String getWortString() {
-		String number = this.x + "";
-		String s;
-		if (this.x == 1) {
-			return this.zahlen[4][1];
-		} else if (this.x == 0) {
-			return this.zahlen[4][2];
-		} else if (this.x == 11) {
-			return this.zahlen[4][3];
-		} else if (this.x == 12) {
-			return this.zahlen[4][4];
-		} else if (this.x == 16) {
-			return this.zahlen[4][5];
-		} else if (this.x == 17) {
-			return this.zahlen[4][6];
-		} else {
-			StringBuilder temp = new StringBuilder(number);
-			for (int i = 4; i > temp.length();) {
-				temp.insert(0, '0');
-			}
-			number = temp.toString();
-			if (number.charAt(0) == '0' && number.charAt(1) == '0' && number.charAt(3) == '0') {
-				s = this.zahlen[1][number.charAt(2) - 48];
+		String out = "";
+		if (x == 0) {
+			return spezialfaelle[0];
+		}
+		if (x >= 1000) {
+			out += einer[x / 1000] + zehnerpotenzen[1];
+			x = x % 1000;
+		}
+		if (x >= 100) {
+			out += einer[x / 100] + zehnerpotenzen[0];
+			x = x % 100;
+		}
+		if (x > 20) {
+			if (x % 10 == 0) {
+				out += this.zehner[x / 10];
 			} else {
-				s = this.zahlen[3][number.charAt(0) - 48] + this.zahlen[2][number.charAt(1) - 48]
-						+ this.zahlen[0][number.charAt(3) - 48] + this.zahlen[4][0]
-						+ this.zahlen[1][number.charAt(2) - 48];
+				out += this.einer[x % 10] + "und" + this.zehner[x / 10];
+			}
+		} else {
+			int zehner = x % 100 / 10;
+			int einer = x % 10;
+			switch (x) {
+			case 0:
+				break;
+			case 1:
+				out += this.spezialfaelle[1];
+				break;
+			case 11:
+				out += this.spezialfaelle[2];
+				break;
+			case 12:
+				out += this.spezialfaelle[3];
+				break;
+			case 16:
+				out += this.spezialfaelle[4];
+				break;
+			case 17:
+				out += this.spezialfaelle[5];
+				break;
+			default:
+				out += this.einer[einer] + this.zehner[zehner];
 			}
 		}
-		return s;
+
+		return out;
 	}
 
 	@Override
@@ -52,8 +64,8 @@ public class ZahlwortDeutsch extends Zahlwort {
 		return "Deutsch";
 	}
 
-	public static void main(String[] kommandozeile) {
-		int[] testtabelle = { 1, 10, 11, 12, 16, 17, 20, 38, 69, 70, 131, 195, 2345 };
+	public static void main(String[] args) {
+		int[] testtabelle = { 1, 10, 11, 12, 16, 17, 20, 38, 69, 70, 131, 195, 2345, 2201 };
 		for (int zahl : testtabelle) {
 			try {
 				ZahlwortDeutsch zahlwort = new ZahlwortDeutsch(zahl);
