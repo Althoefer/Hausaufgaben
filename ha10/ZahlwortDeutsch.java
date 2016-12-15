@@ -1,4 +1,3 @@
-package ha10;
 
 public class ZahlwortDeutsch extends Zahlwort {
 
@@ -9,7 +8,7 @@ public class ZahlwortDeutsch extends Zahlwort {
 					"siebenhundert", "achthundert", "neunhudert" },
 			{ "", "eintausend", "zweitausend", "dreitausend", "viertausend", "fuenftausend", "sechstausend",
 					"siebentasuend", "achttausend", "neuntausend" },
-			{ "und", "eins", "null", "elf", "zwoelf" } };
+			{ "und", "eins", "null", "elf", "zwoelf", "sechzehn", "siebzehn" } };
 
 	public ZahlwortDeutsch(int x) {
 		super(x);
@@ -27,6 +26,10 @@ public class ZahlwortDeutsch extends Zahlwort {
 			return this.zahlen[4][3];
 		} else if (this.x == 12) {
 			return this.zahlen[4][4];
+		} else if (this.x == 16) {
+			return this.zahlen[4][5];
+		} else if (this.x == 17) {
+			return this.zahlen[4][6];
 		} else {
 			StringBuilder temp = new StringBuilder(number);
 			for (int i = 4; i > temp.length();) {
@@ -37,7 +40,8 @@ public class ZahlwortDeutsch extends Zahlwort {
 				s = this.zahlen[1][number.charAt(2) - 48];
 			} else {
 				s = this.zahlen[3][number.charAt(0) - 48] + this.zahlen[2][number.charAt(1) - 48]
-					+ this.zahlen[0][number.charAt(3) - 48] + this.zahlen[4][0] + this.zahlen[1][number.charAt(2) - 48];
+						+ this.zahlen[0][number.charAt(3) - 48] + this.zahlen[4][0]
+						+ this.zahlen[1][number.charAt(2) - 48];
 			}
 		}
 		return s;
