@@ -26,11 +26,11 @@ public class ZahlwortDeutsch extends Zahlwort {
 		if(x==0){
 			return "null";
 		}
-		if(x>1000){
+		if(x>=1000){
 			out += einer[x/1000] + zehnerpotenzen[1];
 			x=x%1000;
 		}
-		if(x>100){
+		if(x>=100){
 			out+=einer[x/100]+zehnerpotenzen[0];
 			x=x%100;
 		}
