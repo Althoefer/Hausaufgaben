@@ -1,4 +1,3 @@
-package ha08;
 
 /**
  * Exception to be thrown if a number is not contained in a Schiebepuzzle

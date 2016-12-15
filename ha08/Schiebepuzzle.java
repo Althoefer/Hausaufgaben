@@ -1,4 +1,3 @@
-package ha08;
 
 /**
  * class Schiebepuzzle is a puzzle with 15 numbers in a 4x4 frame. The tiles can
@@ -40,31 +39,34 @@ public class Schiebepuzzle {
 	 */
 	public void schiebe(int i) throws WrongNumberException, WrongMoveException {
 		// variables for the indexes of the empty place
-		int a = -1;
-		int b = -1;
+		int emptyX = -1;
+		int emptyY = -1;
 		// variables for the indexes of the number i
-		int c = -1;
-		int d = -1;
+		int numberX = -1;
+		int numberY = -1;
 		if (i >= 1 && i <= 15) {
 			for (int z = 0; z < this.puzzle.length; ++z) {
 				for (int j = 0; j < this.puzzle[z].length; ++j) {
+					// search the indexes of the empty place
 					if (this.puzzle[z][j] == 0) {
-						a = z;
-						b = j;
+						emptyX = z;
+						emptyY = j;
 					}
+					// search the indexes of the number i
 					if (this.puzzle[z][j] == i) {
-						c = z;
-						d = j;
+						numberX = z;
+						numberY = j;
 					}
-					if (a != -1 && c != -1) {
+					// if both are found break the loop
+					if (emptyX != -1 && numberX != -1) {
 						break;
 					}
 				}
 			}
 			if (this.istVerschiebbar(i)) {
-				// changes the two tiles
-				this.puzzle[a][b] = i;
-				this.puzzle[c][d] = 0;
+				// change the two tiles
+				this.puzzle[emptyX][emptyY] = i;
+				this.puzzle[numberX][numberY] = 0;
 			} else {
 				throw new WrongMoveException("Given Number cannot be moved!");
 			}
@@ -83,30 +85,33 @@ public class Schiebepuzzle {
 	 */
 	public boolean istVerschiebbar(int i) {
 		// variables for the indexes of the empty place
-		int a = -1;
-		int b = -1;
+		int emptyX = -1;
+		int emptyY = -1;
 		// variables for the indexes of the number i
-		int c = -1;
-		int d = -1;
+		int numberX = -1;
+		int numberY = -1;
 		if (i >= 1 && i <= 15) {
 			for (int z = 0; z < this.puzzle.length; ++z) {
 				for (int j = 0; j < this.puzzle[z].length; ++j) {
+					// search the indexes of the empty place
 					if (this.puzzle[z][j] == 0) {
-						a = z;
-						b = j;
+						emptyX = z;
+						emptyY = j;
 					}
+					// search the indexes of the number i
 					if (this.puzzle[z][j] == i) {
-						c = z;
-						d = j;
+						numberX = z;
+						numberY = j;
 					}
-					if (a != -1 && c != -1) {
+					// if both are found break the loop
+					if (emptyX != -1 && numberX != -1) {
 						break;
 					}
 				}
 			}
 			// condition for possibility of swapping
-			if ((a + 1 == c && b + 1 == d) || (a + 1 == c && b - 1 == d) || (a - 1 == c && b + 1 == d)
-					|| (a - 1 == c && b - 1 == d)) {
+			if ((emptyX + 1 == numberX && emptyY == numberY) || (emptyX - 1 == numberX && emptyY == numberY)
+					|| (emptyX == numberX && emptyY - 1 == numberY) || (emptyX == numberX && emptyY + 1 == numberY)) {
 				return true;
 			} else {
 				return false;
@@ -123,7 +128,7 @@ public class Schiebepuzzle {
 		int number = -1;
 		for (int i = 0; i < 100; ++i) {
 			while (true) {
-				number = (int) (Math.random() * 16);
+				number = (int) (Math.random() * 15 + 1);
 				if (this.istVerschiebbar(number)) {
 					this.schiebe(number);
 					break;

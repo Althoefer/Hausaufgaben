@@ -1,4 +1,3 @@
-package ha08;
 
 /**
  * Solving algorithm for a Schiebepuzzle. Moves the tiles randomly until the
