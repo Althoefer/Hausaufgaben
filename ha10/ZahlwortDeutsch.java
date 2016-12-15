@@ -3,11 +3,11 @@ public class ZahlwortDeutsch extends Zahlwort {
 
 	final String[][] zahlen = new String[][] {
 			{ "", "ein", "zwei", "drei", "vier", "fuenf", "sechs", "sieben", "acht", "neun" },
-			{ "", "zehn", "zwanzig", "dreissig", "vierzig", "fuenfzig", "sechsig", "siebzig", "achtzig", "neunzig" },
+			{ "", "zehn", "zwanzig", "dreissig", "vierzig", "fuenfzig", "sechzig", "siebzig", "achtzig", "neunzig" },
 			{ "", "einhundert", "zweihundert", "dreihundert", "vierhundert", "fuenfhundert", "sechshundert",
-					"siebenhundert", "achthundert", "neunhudert" },
+					"siebenhundert", "achthundert", "neunhundert" },
 			{ "", "eintausend", "zweitausend", "dreitausend", "viertausend", "fuenftausend", "sechstausend",
-					"siebentasuend", "achttausend", "neuntausend" },
+					"siebentausend", "achttausend", "neuntausend" },
 			{ "und", "eins", "null", "elf", "zwoelf", "sechzehn", "siebzehn" } };
 
 	public ZahlwortDeutsch(int x) {
