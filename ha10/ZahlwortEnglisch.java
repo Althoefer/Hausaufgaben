@@ -1,10 +1,10 @@
 
 public class ZahlwortEnglisch extends Zahlwort {
 
-	final String[] einer = new String[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-	final String[] zehner = new String[] { "", "teen", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-	final String[] zehnerpotenzen = new String[] { "hundred", "thousand" };
-	final String[] spezialfaelle = new String[] { "zero", "ten", "eleven", "twelve", "thir", "fif", "eigh"};
+	private final String[] einer = new String[] { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+	private final String[] zehner = new String[] { "", "teen", "twenty", "thirty", "fourty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+	private final String[] zehnerpotenzen = new String[] { "hundred", "thousand" };
+	private final String[] spezialfaelle = new String[] { "zero", "ten", "eleven", "twelve", "thir", "fif", "eigh" };
 
 	public ZahlwortEnglisch(int x) {
 		super(x);
@@ -14,15 +14,21 @@ public class ZahlwortEnglisch extends Zahlwort {
 	public String getWortString() {
 		String out = "";
 		if (x == 0) {
-			return spezialfaelle[0];
+			return this.spezialfaelle[0];
 		}
 		if (x >= 1000) {
-			out += einer[x / 1000] + " " +  zehnerpotenzen[1] + " ";
+			out += this.einer[x / 1000] + " " + this.zehnerpotenzen[1];
 			x = x % 1000;
+			if (x > 0) {
+				out += " ";
+			}
 		}
 		if (x >= 100) {
-			out += einer[x / 100] + " " + zehnerpotenzen[0] + " ";
+			out += this.einer[x / 100] + " " + this.zehnerpotenzen[0];
 			x = x % 100;
+			if (x > 0) {
+				out += " ";
+			}
 		}
 		if (x > 0 && out != "") {
 			out += "and ";
@@ -34,8 +40,6 @@ public class ZahlwortEnglisch extends Zahlwort {
 				out += this.zehner[x / 10] + "-" + this.einer[x % 10];
 			}
 		} else {
-			int zehner = x % 100 / 10;
-			int einer = x % 10;
 			switch (x) {
 			case 0:
 				break;
@@ -53,15 +57,14 @@ public class ZahlwortEnglisch extends Zahlwort {
 				break;
 			case 15:
 				out += this.spezialfaelle[5] + this.zehner[1];
-				break;	
+				break;
 			case 18:
 				out += this.spezialfaelle[6] + this.zehner[1];
 				break;
 			default:
-				out += this.einer[einer] + this.zehner[zehner];
+				out += this.einer[x % 10] + this.zehner[x % 100 / 10];
 			}
 		}
-
 		return out;
 	}
 
@@ -69,7 +72,7 @@ public class ZahlwortEnglisch extends Zahlwort {
 	public String getSprache() {
 		return "Englisch";
 	}
-	
+
 	public static void main(String[] args) {
 		int[] testtabelle = { 10, 11, 12, 13, 15, 18, 20, 35, 51, 80, 103, 1067 };
 		for (int zahl : testtabelle) {

@@ -31,8 +31,6 @@ public class ZahlwortDeutsch extends Zahlwort {
 				out += this.einer[x % 10] + "und" + this.zehner[x / 10];
 			}
 		} else {
-			int zehner = x % 100 / 10;
-			int einer = x % 10;
 			switch (x) {
 			case 0:
 				break;
@@ -52,7 +50,7 @@ public class ZahlwortDeutsch extends Zahlwort {
 				out += this.spezialfaelle[5];
 				break;
 			default:
-				out += this.einer[einer] + this.zehner[zehner];
+				out += this.einer[x % 10] + this.zehner[x % 100 / 10];
 			}
 		}
 
@@ -65,7 +63,7 @@ public class ZahlwortDeutsch extends Zahlwort {
 	}
 
 	public static void main(String[] args) {
-		int[] testtabelle = { 1, 10, 11, 12, 16, 17, 20, 38, 69, 70, 131, 195, 2345, 2201 };
+		int[] testtabelle = { 1, 10, 11, 12, 16, 17, 20, 38, 69, 70, 131, 195, 2345 };
 		for (int zahl : testtabelle) {
 			try {
 				ZahlwortDeutsch zahlwort = new ZahlwortDeutsch(zahl);
