@@ -1,4 +1,3 @@
-package ha10;
 
 public abstract class Zahlwort {
 	protected int x;
