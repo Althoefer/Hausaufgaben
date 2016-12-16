@@ -1,3 +1,4 @@
+package ha10;
 
 public class ZahlwortDeutsch extends Zahlwort {
 
