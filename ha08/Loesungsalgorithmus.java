@@ -1,4 +1,4 @@
-
+package ha08;
 /**
  * Interface for different solving algorithms for a Schiebepuzzle
  * 

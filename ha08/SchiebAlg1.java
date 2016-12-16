@@ -1,4 +1,4 @@
-
+package ha08;
 /**
  * Solving algorithm for a Schiebepuzzle. Moves the tiles randomly until the
  * tile with the number 1 is in the top left corner of the puzzle

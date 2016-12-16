@@ -1,4 +1,4 @@
-
+package ha08;
 /**
  * Test class for Schiebepuzzle and its solving algorithms
  * 
