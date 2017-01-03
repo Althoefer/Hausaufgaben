@@ -1,9 +1,17 @@
 
 package ha11;
 
+/**
+ * class Kochkurve gives the ability to create the Kochkurve of each
+ * iteration-step
+ *
+ */
 public class Kockkurve {
 
 	/**
+	 * prints the points, which need to be connected, to get the rek th
+	 * iteration of the Kochkurve
+	 * 
 	 * @param ax
 	 *            x-Koordinate des Startpunktes
 	 * @param ay
@@ -40,9 +48,13 @@ public class Kockkurve {
 	}
 
 	public static void main(String[] args) {
-		kochKurve(0, 500, 500, 500, 2);
-		// da immer nur die Anfangspunkte ausgegeben werden, muss am Ende noch
-		// der Endpunkt ausgegeben werden
-		System.out.print("(500,0/500,0)");
+		for (int i = 0; i < 3; ++i) {
+			System.out.printf("%d. Iteration der Koch-Kurve:\n", i);
+			kochKurve(0, 500, 500, 500, i);
+			// da immer nur die Anfangspunkte ausgegeben werden, muss am Ende
+			// noch
+			// der Endpunkt ausgegeben werden
+			System.out.println("(500,0/500,0)");
+		}
 	}
 }
