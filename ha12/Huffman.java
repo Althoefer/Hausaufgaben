@@ -27,6 +27,9 @@ public class Huffman {
 	 * @throws FileNotFoundException
 	 *             if file f cannot be found
 	 */
+	// does not check if every letter in the input file is used
+	// does not check if every letter in the input file is unique
+	// was checking those conditions part of the exercise or not?
 	public static String decode(File f) throws IllegalArgumentException, FileNotFoundException {
 		String code = Huffman.readFile(f); // coded text
 		String text = ""; // decoded text
