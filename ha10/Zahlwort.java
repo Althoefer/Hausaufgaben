@@ -4,7 +4,7 @@ public abstract class Zahlwort {
 	protected int x;
 
 	public Zahlwort(int x) {
-		if (x <= 0 || x >= 10000) {
+		if ((x <= 0) || (x >= 10000)) {
 			throw new NumberFormatException("Zahl nicht im " + " Bereich zwischen 1 und 9999");
 		} else {
 			this.x = x;
@@ -12,14 +12,15 @@ public abstract class Zahlwort {
 	}
 
 	public String getZifferString() {
-		return x + "";
+		return this.x + "";
 	}
 
 	public abstract String getWortString();
 
 	public abstract String getSprache();
 
+	@Override
 	public String toString() {
-		return "Die Zahl " + x + " schreibt man auf " + getSprache() + ": " + getWortString() + ".";
+		return "Die Zahl " + this.x + " schreibt man auf " + this.getSprache() + ": " + this.getWortString() + ".";
 	}
 }

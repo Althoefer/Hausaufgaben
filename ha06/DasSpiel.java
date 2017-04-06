@@ -1,7 +1,8 @@
 package ha06;
+
 /**
  * Test-class of the prisoner's dilemma game
- * 
+ *
  * @author cw585968
  *
  */

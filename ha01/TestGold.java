@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 
 /**
  * Testklasse fuer Klasse GoldTagespreis und GoldPreis
- * 
+ *
  * @author cw585968
  *
  */

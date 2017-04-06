@@ -1,9 +1,10 @@
 package ha06;
+
 /**
  * TitForTat is a viable strategy for the game prisoner's dilemma. The player
  * cooperates in the first round. Every following round he copies the opponent's
  * decision.
- * 
+ *
  * @author cw585968
  *
  */

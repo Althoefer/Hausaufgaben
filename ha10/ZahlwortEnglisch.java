@@ -8,16 +8,16 @@ public class ZahlwortEnglisch extends Zahlwort {
 
 	@Override
 	public String getWortString() {
-		
+
 		return null;
 	}
 
 	@Override
 	public String getSprache() {
-		
+
 		return null;
 	}
-	
+
 	public static void main(String[] args) {
 		int[] testtabelle = { 10, 11, 12, 13, 15, 18, 20, 35, 51, 80, 103, 1067 };
 		for (int zahl : testtabelle) {

@@ -1,17 +1,17 @@
 package ha07;
 
 import java.util.Arrays;
+
 /**
- * class Blatt
- * represents a player's hand with 3 cards in the game Heads Up
- * 
+ * class Blatt represents a player's hand with 3 cards in the game Heads Up
+ *
  */
 public class Blatt {
 	private int[] blatt;
 
 	/**
 	 * one and only constuctor for this class.
-	 * 
+	 *
 	 * @param newBlatt
 	 *            Array which contains the 3 cards of the player
 	 * @throws IllegalArgumentException
@@ -26,7 +26,7 @@ public class Blatt {
 		// checks if all values in the field are valid (between 2 and 14)
 		// throws an IllegalArgumentException if this is not the case
 		for (int i = 0; i < 3; i++) {
-			if (newBlatt[i] >= 2 && newBlatt[i] <= 14) {
+			if ((newBlatt[i] >= 2) && (newBlatt[i] <= 14)) {
 
 			} else {
 				throw new IllegalArgumentException("zahlen im Blatt zu gross/klein!");
@@ -38,8 +38,9 @@ public class Blatt {
 	/**
 	 * @return returns the values of the player's hand
 	 */
+	@Override
 	public String toString() {
-		String ret = Arrays.toString(blatt);
+		String ret = Arrays.toString(this.blatt);
 		// trims the normal Arrays.toString() method and removes the []
 		return ret.substring(1, ret.length() - 1);
 	}
@@ -49,6 +50,6 @@ public class Blatt {
 	 * @return returns the player's hand
 	 */
 	public int[] getBlatt() {
-		return blatt.clone();
+		return this.blatt.clone();
 	}
 }

@@ -4,7 +4,7 @@ package ha08;
  * class Schiebepuzzle is a puzzle with 15 numbers in a 4x4 frame. The tiles can
  * be moved by horizontal and vertical shifts. The aim is to get the tiles set
  * up in order by performing a number of shifts.
- * 
+ *
  * @author cw585968
  *
  */
@@ -19,10 +19,10 @@ public class Schiebepuzzle {
 	public Schiebepuzzle() {
 		for (int i = 0; i < this.puzzle.length; ++i) {
 			for (int j = 0; j < this.puzzle[i].length; ++j) {
-				if (i == 3 && j == 3) {
+				if ((i == 3) && (j == 3)) {
 					this.puzzle[i][j] = 0;
 				} else {
-					this.puzzle[i][j] = i * 4 + j + 1;
+					this.puzzle[i][j] = (i * 4) + j + 1;
 				}
 			}
 		}
@@ -30,7 +30,7 @@ public class Schiebepuzzle {
 
 	/**
 	 * Shifts a tile with the number i to the empty spot
-	 * 
+	 *
 	 * @param i
 	 *            the tile which is requested to be moved
 	 * @throws WrongNumberException
@@ -45,7 +45,7 @@ public class Schiebepuzzle {
 		// variables for the indexes of the number i
 		int c = -1;
 		int d = -1;
-		if (i >= 1 && i <= 15) {
+		if ((i >= 1) && (i <= 15)) {
 			for (int z = 0; z < this.puzzle.length; ++z) {
 				for (int j = 0; j < this.puzzle[z].length; ++j) {
 					if (this.puzzle[z][j] == 0) {
@@ -56,7 +56,7 @@ public class Schiebepuzzle {
 						c = z;
 						d = j;
 					}
-					if (a != -1 && c != -1) {
+					if ((a != -1) && (c != -1)) {
 						break;
 					}
 				}
@@ -75,7 +75,7 @@ public class Schiebepuzzle {
 
 	/**
 	 * Tests if the tile with the number i can be shifted
-	 * 
+	 *
 	 * @param i
 	 *            the number of the tile of which is requested to know if it can
 	 *            be moved or not
@@ -88,7 +88,7 @@ public class Schiebepuzzle {
 		// variables for the indexes of the number i
 		int c = -1;
 		int d = -1;
-		if (i >= 1 && i <= 15) {
+		if ((i >= 1) && (i <= 15)) {
 			for (int z = 0; z < this.puzzle.length; ++z) {
 				for (int j = 0; j < this.puzzle[z].length; ++j) {
 					if (this.puzzle[z][j] == 0) {
@@ -99,14 +99,14 @@ public class Schiebepuzzle {
 						c = z;
 						d = j;
 					}
-					if (a != -1 && c != -1) {
+					if ((a != -1) && (c != -1)) {
 						break;
 					}
 				}
 			}
 			// condition for possibility of swapping
-			if ((a + 1 == c && b + 1 == d) || (a + 1 == c && b - 1 == d) || (a - 1 == c && b + 1 == d)
-					|| (a - 1 == c && b - 1 == d)) {
+			if ((((a + 1) == c) && ((b + 1) == d)) || (((a + 1) == c) && ((b - 1) == d))
+					|| (((a - 1) == c) && ((b + 1) == d)) || (((a - 1) == c) && ((b - 1) == d))) {
 				return true;
 			} else {
 				return false;
@@ -135,6 +135,7 @@ public class Schiebepuzzle {
 	/**
 	 * Returns a formated String of the current state of the puzzle
 	 */
+	@Override
 	public String toString() {
 		String s = "";
 		int number = 0;
@@ -155,7 +156,7 @@ public class Schiebepuzzle {
 
 	/**
 	 * Gives the current state of the puzzle as an integer array
-	 * 
+	 *
 	 * @return the current state of the puzzle
 	 */
 	public int[][] getPuzzle() {

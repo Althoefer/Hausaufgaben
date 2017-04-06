@@ -6,7 +6,7 @@ package ha06;
  * the choice between cooperating or betray. Depending on the choice of both
  * players each player gets a different count of penalty points. The goal is to
  * get as least penalty points as possible.
- * 
+ *
  * @author cw585968
  *
  */
@@ -22,7 +22,7 @@ public class GefDilemma {
 	/**
 	 * Constructor of GefDilemma; sets the two strategies each player follows
 	 * and sets the start values of the penalty points to zero.
-	 * 
+	 *
 	 * @param player1
 	 *            strategy of player1
 	 * @param player2
@@ -37,7 +37,7 @@ public class GefDilemma {
 
 	/**
 	 * Performs the game n turns.
-	 * 
+	 *
 	 * @param n
 	 *            number of turns of the game
 	 */

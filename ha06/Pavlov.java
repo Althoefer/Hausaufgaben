@@ -1,10 +1,11 @@
 package ha06;
+
 /**
  * Pavlov is a viable strategy for the game prisoner's dilemma. The player
  * cooperates in the first round. Afterwards he bases his decision on the
  * equality of the two players' decisions from last round. If they are equal,
  * the player will cooperate. Otherwise he will betray.
- * 
+ *
  * @author cw585968
  *
  */

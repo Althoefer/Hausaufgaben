@@ -11,86 +11,89 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class EmailAdressBuch {
-	
+
 	private HashMap<String, String> adressBuch;
-	
-	public EmailAdressBuch(){
-		adressBuch = new HashMap();
+
+	public EmailAdressBuch() {
+		this.adressBuch = new HashMap();
 	}
+
 	/**
 	 * fuegt eine neue Adresse hinzu
 	 */
-	public void einfuegen(String name, String adresse){
-		adressBuch.put(name, adresse);
+	public void einfuegen(String name, String adresse) {
+		this.adressBuch.put(name, adresse);
 	}
-	
+
 	/**
-	 * gibt die adresse passend zum Namen zurück. Wenn der Name
-	 * nicht im adressBuch steht, wird eine UnknownNameException geworfen
+	 * gibt die adresse passend zum Namen zurück. Wenn der Name nicht im
+	 * adressBuch steht, wird eine UnknownNameException geworfen
 	 */
-	public String abfrage(String name){
-		if(adressBuch.get(name) != null){
-			return adressBuch.get(name);
+	public String abfrage(String name) {
+		if (this.adressBuch.get(name) != null) {
+			return this.adressBuch.get(name);
 		}
 		throw new UnknownNameException("Name nicht vorhanden!");
 	}
-	
+
 	/**
-	 * gibt das adressBuch als String zuruck, in der Form
-	 * {name1=adresse1, name2=adresse2, ....}
+	 * gibt das adressBuch als String zuruck, in der Form {name1=adresse1,
+	 * name2=adresse2, ....}
 	 */
-	public String toString(){
+	@Override
+	public String toString() {
 		ArrayList<String> names = new ArrayList(this.adressBuch.keySet());
-		
-		//durchlaeuft alle Namen aus der  ArrayList names  und damit auch das adressBuch
+
+		// durchlaeuft alle Namen aus der ArrayList names und damit auch das
+		// adressBuch
 		String ret = "{";
-		for(int i = 0; i < names.size(); i++){
-			ret += names.get(i) + "=" + adressBuch.get(names.get(i)) + ", ";
+		for (int i = 0; i < names.size(); i++) {
+			ret += names.get(i) + "=" + this.adressBuch.get(names.get(i)) + ", ";
 		}
-		//entfernt das letzte anfeguegte ", "
-		ret = ret.substring(0, ret.length()-3);
+		// entfernt das letzte anfeguegte ", "
+		ret = ret.substring(0, ret.length() - 3);
 		ret += "}";
-		
+
 		return ret;
 	}
+
 	/*
 	 * interne Methode um das adressBuch aus einem Scanner einzulesen
 	 */
-	private void einlesenScanner(Scanner scanner){
+	private void einlesenScanner(Scanner scanner) {
 		String line[];
-		while(scanner.hasNextLine()){
+		while (scanner.hasNextLine()) {
 			line = scanner.nextLine().split(";");
-			//line[0] ist der Name, line[1] die Adresse
-			adressBuch.put(line[0], line[1]);
+			// line[0] ist der Name, line[1] die Adresse
+			this.adressBuch.put(line[0], line[1]);
 		}
 	}
-	
-	
+
 	/**
-	 * liest aus einer angegebenen Datein ein. Ruft intern
-	 * die Methode einlesenScanner auf und uebergibt ihr einen Scanner
+	 * liest aus einer angegebenen Datein ein. Ruft intern die Methode
+	 * einlesenScanner auf und uebergibt ihr einen Scanner
 	 */
-	public void einlesen(String dateiname){
+	public void einlesen(String dateiname) {
 		File file = new File(dateiname);
-		try{
+		try {
 			Scanner scanner = new Scanner(file);
-			einlesenScanner(scanner);
-		} catch(FileNotFoundException e){
+			this.einlesenScanner(scanner);
+		} catch (FileNotFoundException e) {
 			System.out.println("Dateiname ungültig");
 		}
 	}
-	
+
 	/**
-	 * liest aus einer angegebenen URL ein. Ruft intern
-	 * die Methode einlesenScanner auf und uebergibt ihr einen Scanner
+	 * liest aus einer angegebenen URL ein. Ruft intern die Methode
+	 * einlesenScanner auf und uebergibt ihr einen Scanner
 	 */
-	public void mitarbeiterEinlesen(URL url){
-		try{
-			URLConnection connection = url.openConnection(); 
+	public void mitarbeiterEinlesen(URL url) {
+		try {
+			URLConnection connection = url.openConnection();
 			Object content = connection.getContent();
-			Scanner scanner = new Scanner((InputStream)content);
-			einlesenScanner(scanner);
-		} catch(IOException e){
+			Scanner scanner = new Scanner((InputStream) content);
+			this.einlesenScanner(scanner);
+		} catch (IOException e) {
 			System.out.println("Felhre1!1!");
 		}
 	}

@@ -4426,25 +4426,25 @@ public class ZahlwortDeutschAlternative extends Zahlwort {
 	public String getWortString() {
 		switch (this.x / 1000) {
 		case 0:
-			return this.getZahlen0(x % 1000);
+			return this.getZahlen0(this.x % 1000);
 		case 1:
-			return this.getZahlen1(x % 1000);
+			return this.getZahlen1(this.x % 1000);
 		case 2:
-			return this.getZahlen2(x % 1000);
+			return this.getZahlen2(this.x % 1000);
 		case 3:
-			return this.getZahlen3(x % 1000);
+			return this.getZahlen3(this.x % 1000);
 		case 4:
-			return this.getZahlen4(x % 1000);
+			return this.getZahlen4(this.x % 1000);
 		case 5:
-			return this.getZahlen5(x % 1000);
+			return this.getZahlen5(this.x % 1000);
 		case 6:
-			return this.getZahlen6(x % 1000);
+			return this.getZahlen6(this.x % 1000);
 		case 7:
-			return this.getZahlen7(x % 1000);
+			return this.getZahlen7(this.x % 1000);
 		case 8:
-			return this.getZahlen8(x % 1000);
+			return this.getZahlen8(this.x % 1000);
 		case 9:
-			return this.getZahlen9(x % 1000);
+			return this.getZahlen9(this.x % 1000);
 		default:
 			throw new NumberFormatException("Zahl nicht im " + " Bereich zwischen 1 und 9999");
 		}

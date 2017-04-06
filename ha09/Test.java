@@ -1,6 +1,5 @@
 package ha09;
 
-
 public class Test {
 	public static void main(String[] args) {
 		// Test eines Turms

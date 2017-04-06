@@ -1,8 +1,9 @@
 package ha04;
+
 /**
  * Klasse PositiveNumber, die eine positive Zahl speichert und die Moeglichkeit
  * bietet sie in andere Zahlensysteme (2,10,16) umzuwandeln
- * 
+ *
  * @author cw585968
  *
  */
@@ -12,7 +13,7 @@ public class PositiveNumber {
 
 	/**
 	 * Speichert den zur uebergebenen Dezimalzahl gehoerenden Wert ab
-	 * 
+	 *
 	 * @param s
 	 *            Dezimalzahl des Wertes, der gespeichert werden soll
 	 * @throws NumberFormatException
@@ -24,13 +25,13 @@ public class PositiveNumber {
 		long prod = 0;
 		long zahl = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {
-			if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+			if ((s.charAt(i) >= '0') && (s.charAt(i) <= '9')) {
 				prod = s.charAt(i) - '0';
-				for (int j = 1; j < s.length() - i; j++) {
+				for (int j = 1; j < (s.length() - i); j++) {
 					prod = prod * 10;
 				}
 				zahl = zahl + prod;
-				if (prod > Integer.MAX_VALUE || zahl > Integer.MAX_VALUE) {
+				if ((prod > Integer.MAX_VALUE) || (zahl > Integer.MAX_VALUE)) {
 					throw new ArithmeticException("Zu grosse Zahl!");
 				}
 			} else if (s.charAt(i) == '-') {
@@ -44,7 +45,7 @@ public class PositiveNumber {
 
 	/**
 	 * Speichert den zur uebergebenen Hexadezimalzahl gehoerenden Wert ab
-	 * 
+	 *
 	 * @param s
 	 *            Hexadezimalzahl des Wertes, der gespeichert werden soll
 	 * @throws NumberFormatException
@@ -56,22 +57,22 @@ public class PositiveNumber {
 		long prod = 0;
 		long zahl = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {
-			if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+			if ((s.charAt(i) >= '0') && (s.charAt(i) <= '9')) {
 				prod = s.charAt(i) - '0';
-				for (int j = 1; j < s.length() - i; j++) {
+				for (int j = 1; j < (s.length() - i); j++) {
 					prod = prod * 16;
 				}
 				zahl = zahl + prod;
-				if (prod > Integer.MAX_VALUE || zahl > Integer.MAX_VALUE) {
+				if ((prod > Integer.MAX_VALUE) || (zahl > Integer.MAX_VALUE)) {
 					throw new ArithmeticException("Zu grosse Zahl!");
 				}
-			} else if (s.charAt(i) >= 'a' && s.charAt(i) <= 'f') {
+			} else if ((s.charAt(i) >= 'a') && (s.charAt(i) <= 'f')) {
 				prod = s.charAt(i) - 87;
-				for (int j = 1; j < s.length() - i; j++) {
+				for (int j = 1; j < (s.length() - i); j++) {
 					prod = prod * 16;
 				}
 				zahl = zahl + prod;
-				if (prod > Integer.MAX_VALUE || zahl > Integer.MAX_VALUE) {
+				if ((prod > Integer.MAX_VALUE) || (zahl > Integer.MAX_VALUE)) {
 					throw new ArithmeticException("Zu grosse Zahl!");
 				}
 			} else if (s.charAt(i) == '-') {
@@ -85,7 +86,7 @@ public class PositiveNumber {
 
 	/**
 	 * Speichert den zur uebergebenen Binaerzahl gehoerenden Wert ab
-	 * 
+	 *
 	 * @param s
 	 *            Binaerzahl des Wertes, der gespeichert werden soll
 	 * @throws NumberFormatException
@@ -97,13 +98,13 @@ public class PositiveNumber {
 		long prod = 0;
 		long zahl = 0;
 		for (int i = s.length() - 1; i >= 0; i--) {
-			if (s.charAt(i) >= '0' && s.charAt(i) <= '1') {
+			if ((s.charAt(i) >= '0') && (s.charAt(i) <= '1')) {
 				prod = s.charAt(i) - '0';
-				for (int j = 1; j < s.length() - i; j++) {
+				for (int j = 1; j < (s.length() - i); j++) {
 					prod = prod * 2;
 				}
 				zahl = zahl + prod;
-				if (prod > Integer.MAX_VALUE || zahl > Integer.MAX_VALUE) {
+				if ((prod > Integer.MAX_VALUE) || (zahl > Integer.MAX_VALUE)) {
 					throw new ArithmeticException("Zu grosse Zahl!");
 				}
 			} else if (s.charAt(i) == '-') {
@@ -117,7 +118,7 @@ public class PositiveNumber {
 
 	/**
 	 * Gibt den Wert als Dezimalzahl zurueck
-	 * 
+	 *
 	 * @return String der gespeicherte Wert als Dezimalzahl
 	 */
 	public String getDecimal() {
@@ -127,7 +128,7 @@ public class PositiveNumber {
 
 	/**
 	 * Gibt den Wert als Hexadezimalzahl zurueck
-	 * 
+	 *
 	 * @return String der gespeicherte Wert als Hexadezimalzahl
 	 */
 	public String getHexadecimal() {
@@ -140,10 +141,10 @@ public class PositiveNumber {
 			if (bit > 9) {
 				cbit = (char) (bit + 55);
 				result = result + cbit;
-				zahl = (int) zahl / 16;
+				zahl = zahl / 16;
 			} else {
 				result = result + bit;
-				zahl = (int) zahl / 16;
+				zahl = zahl / 16;
 			}
 		} while (zahl > 0);
 		// umgekehrte Reihenfolge der Stellen
@@ -156,7 +157,7 @@ public class PositiveNumber {
 
 	/**
 	 * Gibt den Wert als Binaerzahl zurueck
-	 * 
+	 *
 	 * @return String der gespeicherte Wert als Binaerzahl
 	 */
 	public String getBinary() {
@@ -166,7 +167,7 @@ public class PositiveNumber {
 		do {
 			int bit = zahl % 2;
 			result = result + bit;
-			zahl = (int) zahl / 2;
+			zahl = zahl / 2;
 		} while (zahl > 0);
 		// umgekehrte Reihenfolge der Stellen
 		StringBuilder s = new StringBuilder(result);

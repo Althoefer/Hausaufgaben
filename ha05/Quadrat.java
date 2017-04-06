@@ -1,6 +1,7 @@
 package ha05;
+
 /**
- *implements the interface Rechenoperatio 
+ * implements the interface Rechenoperatio
  */
 public class Quadrat implements Rechenoperation {
 

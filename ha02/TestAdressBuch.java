@@ -17,7 +17,7 @@ public class TestAdressBuch {
 		} catch (MalformedURLException e) {
 			System.out.println("URL ungültig");
 		}
-		
+
 		buch2.einlesen("adressbuch.txt");
 		System.out.println(buch2.toString());
 		buch2.einfuegen("John Cena", "john.cena@gmx.de");

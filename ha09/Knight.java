@@ -1,12 +1,11 @@
 package ha09;
 
-
 import java.util.ArrayList;
 
 /**
  * extends the abstract class Chessman represents a knight and implements the
  * getMoveList() method in an according way
- * 
+ *
  * @author Tom Althoefer
  *
  */
@@ -14,7 +13,7 @@ public class Knight extends Chessman {
 
 	/**
 	 * constructs a new Knight, uses the constructor of the super class
-	 * 
+	 *
 	 * @param p
 	 *            Position of the Knight
 	 */
@@ -59,6 +58,7 @@ public class Knight extends Chessman {
 	/**
 	 * @return Position of the Knight "Springer: (x/y)"
 	 */
+	@Override
 	public String toString() {
 		return "Springer: (" + this.getPosition().toString() + ")";
 	}

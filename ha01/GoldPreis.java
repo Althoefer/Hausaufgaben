@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * 
+ *
  * Speichert eine Liste von GoldTagespreisen
- * 
+ *
  * @author cw585968
  *
  */
@@ -21,7 +21,7 @@ public class GoldPreis {
 	 * Konstruktor der Klasse GoldPreis: Erzeugt ein neues Objekt der Klasse
 	 * GoldPreis. Erhaelt eine Datei mit Tagen und ihren jeweiligen Goldpreise.
 	 * Anlegen von GoldTagespreis-Elementen fuer eine Liste.
-	 * 
+	 *
 	 * @param dateiname
 	 *            Dateiname, der die Werte von Tagen und ihrer Goldpreise
 	 *            enthaelt
@@ -59,14 +59,14 @@ public class GoldPreis {
 				// GoldTagespreis-Element mit ausgelesenem Datum und Preis wird
 				// an list angehaengt
 				GoldTagespreis g = new GoldTagespreis(datum, preis);
-				list.add(g);
+				this.list.add(g);
 			}
 		}
 	}
 
 	/**
 	 * Sucht Tagespreis zum uebergebenen Datum heraus
-	 * 
+	 *
 	 * @param datum
 	 *            Tag des Goldpreises, der herausgefunden werden soll
 	 * @return double TagesGoldpreis
@@ -76,10 +76,10 @@ public class GoldPreis {
 		GoldTagespreis g = new GoldTagespreis(datum, 0);
 		double price = 0;
 		boolean exists = false; // Variable, um zu testen ob Datum existiert
-		for (int i = 0; i < list.size(); i++) {
-			if (g.datum.equals(list.get(i).datum)) {
+		for (int i = 0; i < this.list.size(); i++) {
+			if (g.datum.equals(this.list.get(i).datum)) {
 				exists = true;
-				price = list.get(i).preis;
+				price = this.list.get(i).preis;
 				break;
 			}
 		}
@@ -98,40 +98,40 @@ public class GoldPreis {
 	public void printMinMax() {
 		GoldTagespreis min = new GoldTagespreis("0", 0);
 		// sucht erstes Element wo Preis einen korrekten Wert hat (nicht -1)
-		for (int m = 0; m < list.size(); m++) {
-			if (list.get(m).preis != -1) {
-				min = new GoldTagespreis(list.get(0).datum, list.get(0).preis);
+		for (int m = 0; m < this.list.size(); m++) {
+			if (this.list.get(m).preis != -1) {
+				min = new GoldTagespreis(this.list.get(0).datum, this.list.get(0).preis);
 				break;
 			}
 		}
 		// -1 Wert spielt bei maximum keine Rolle, da sofort ersetzt werden
 		// wuerde
-		GoldTagespreis max = new GoldTagespreis(list.get(0).datum, list.get(0).preis);
+		GoldTagespreis max = new GoldTagespreis(this.list.get(0).datum, this.list.get(0).preis);
 		String minlist = ""; // speichert alle Tage mit kleinsten Wert
 		String maxlist = ""; // speichert alle Tage mit groesstem Wert
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < this.list.size(); i++) {
 			// ueberspringt unkorrekte (-1) Werte
-			if (list.get(i).preis == -1) {
+			if (this.list.get(i).preis == -1) {
 				continue;
 			} else {
-				if (list.get(i).preis < min.preis) {
-					min = list.get(i);
+				if (this.list.get(i).preis < min.preis) {
+					min = this.list.get(i);
 					minlist = "";
-				} else if (list.get(i).preis == min.preis) {
-					if (list.get(i).datum.equals(min.datum)) {
+				} else if (this.list.get(i).preis == min.preis) {
+					if (this.list.get(i).datum.equals(min.datum)) {
 					} else {
 						minlist = minlist + " " + min.datum;
-						min = list.get(i);
+						min = this.list.get(i);
 					}
 				}
-				if (list.get(i).preis > max.preis) {
-					max = list.get(i);
+				if (this.list.get(i).preis > max.preis) {
+					max = this.list.get(i);
 					maxlist = "";
-				} else if (list.get(i).preis == max.preis) {
-					if (list.get(i).datum.equals(max.datum)) {
+				} else if (this.list.get(i).preis == max.preis) {
+					if (this.list.get(i).datum.equals(max.datum)) {
 					} else {
 						maxlist = maxlist + " " + max.datum;
-						max = list.get(i);
+						max = this.list.get(i);
 					}
 				}
 			}

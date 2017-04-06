@@ -1,6 +1,5 @@
 package ha09;
 
-
 import java.util.ArrayList;
 
 /**
@@ -9,7 +8,7 @@ import java.util.ArrayList;
  * possible Positions has to be implemented by the 'real' figures, like rook,
  * knight, king, queen etc. for an example implementation have a look at Rook
  * and Knight
- * 
+ *
  * @author Tom Althoefer
  *
  */
@@ -20,7 +19,7 @@ public abstract class Chessman {
 	 * constructs a new Chessman, with and sets the attribute Position. Because
 	 * Position has final attributes we dont need a clone of it and just use the
 	 * pointer
-	 * 
+	 *
 	 * @param p
 	 *            the Position of the Chessman
 	 * @throws RuntimeException
@@ -37,7 +36,7 @@ public abstract class Chessman {
 	/**
 	 * Again, Position has final Attributes and cannot be changed in any way, so
 	 * we just use the actual Object and do not have to clone it
-	 * 
+	 *
 	 * @return returns the Position of the chessman
 	 */
 	public Position getPosition() {
@@ -47,7 +46,7 @@ public abstract class Chessman {
 	/**
 	 * sets a new Position for the figure, if it is a Position, the figure can
 	 * move to
-	 * 
+	 *
 	 * @param pos
 	 *            new Position for the Chessman
 	 * @throws RuntimeExcpetion
@@ -64,14 +63,14 @@ public abstract class Chessman {
 	/**
 	 * checks, if the given Position pos can be reached by the chessman in one
 	 * move
-	 * 
+	 *
 	 * @param pos
 	 *            Position to be tested
 	 * @return true, if it is a reachable position false, if not
 	 */
 	public boolean canMoveTo(Position pos) {
 		for (Position position : this.getMoveList()) {
-			if (position.getX() == pos.getX() && position.getY() == pos.getY()) {
+			if ((position.getX() == pos.getX()) && (position.getY() == pos.getY())) {
 				return true;
 			}
 		}
@@ -82,7 +81,7 @@ public abstract class Chessman {
 	 * returns a ArrayList of all possible reachable Positions for the chess
 	 * figure; ignores other figures; method has to be implemented by the actual
 	 * chess figures
-	 * 
+	 *
 	 * @return returns a ArrayList of all possible reachable Positions for the
 	 *         chess figure
 	 */

@@ -1,8 +1,9 @@
 package ha06;
+
 /**
  * Random is a viable strategy for the game prisoner's dilemma. The player
  * chooses by pure chance to cooperate or betray.
- * 
+ *
  * @author cw585968
  *
  */

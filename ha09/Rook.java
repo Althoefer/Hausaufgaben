@@ -1,12 +1,11 @@
 package ha09;
 
-
 import java.util.ArrayList;
 
 /**
  * extends the abstract class Chessman represents a rook and implements the
  * getMoveList() method in an according way
- * 
+ *
  * @author Tom Althoefer
  *
  */
@@ -14,7 +13,7 @@ public class Rook extends Chessman {
 
 	/**
 	 * constructs a new Rook, uses the constructor of the super class
-	 * 
+	 *
 	 * @param p
 	 *            Position of the Rook
 	 */
@@ -47,6 +46,7 @@ public class Rook extends Chessman {
 	/**
 	 * @return Position of the Knight "Springer: (x/y)"
 	 */
+	@Override
 	public String toString() {
 		return "Turm: (" + this.getPosition().toString() + ")";
 	}
